@@ -1,6 +1,9 @@
+'use client';
+
 import Head from 'next/head';
 import Layout from './components/Layout';
 import ThreeCanvas from './components/ThreeCanvas';
+// import Popup from './components/Popup';
 
 const Home: React.FC = () => {
   return (
@@ -9,15 +12,12 @@ const Home: React.FC = () => {
         <title>My Portfolio</title>
         <meta name="description" content="Showcase of my work and skills." />
       </Head>
-      {/* Main Content */}
-      <section className="relative">
+      <section className="relative flex flex-col min-h-screen">
         <div className="absolute inset-0">
-          {/* Canvas for 3D elements */}
           <ThreeCanvas />
         </div>
-        <div className="relative z-10 text-center text-white">
-          <h1 className="text-5xl font-bold">Welcome to My Portfolio</h1>
-          <p className="mt-4">A showcase of my work and skills.</p>
+        <div className="flex flex-1 items-center justify-center">
+          {/* Your main content */}
         </div>
       </section>
     </Layout>

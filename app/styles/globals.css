@@ -2,14 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './footer';
+
+
+/* Custom CSS */
 :root {
   --background: #ffffff;
-  --foreground: #805858;
+  --foreground: #4c4848;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #bc9f9f;
+    --background: #231e1e;
     --foreground: #ededed;
   }
 }

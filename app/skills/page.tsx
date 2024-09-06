@@ -1,16 +1,11 @@
-// pages/about.tsx
+// pages/path.tsx
 import Layout from '../components/Layout';
 
-export default function About() {
+export default function Path() {
   return (
     <Layout>
       <div className="p-8 max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-4">About Me</h1>
-        <p className="text-lg mb-4">
-          Hello! I am a passionate developer with expertise in modern web technologies including <strong>Three.js</strong> and <strong>Vue.js</strong>.
-          I specialize in creating interactive and visually engaging experiences. With a solid foundation in software engineering and a keen eye for design,
-          I strive to build intuitive and user-friendly applications.
-        </p>
+        <h1 className="text-4xl font-bold mb-4">About my path</h1>
         <p className="text-lg mb-4">
           My journey began with a fascination for coding and a drive to solve complex problems. Over the years, I have worked on diverse projects,
           ranging from dynamic web applications to immersive 3D visualizations. I am constantly learning and exploring new technologies to keep up with the evolving landscape of web development.

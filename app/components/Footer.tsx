@@ -1,29 +1,26 @@
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-900 text-white py-6">
-      <div className="container mx-auto text-center">
-        {/* Contact Information */}
-        <p className="mb-4">Email: your.email@example.com | Phone: (optional)</p>
-        {/* Social Media Links */}
-        <div className="flex justify-center space-x-4 mb-4">
-          <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer">Twitter</a>
+    <footer className="footer bg-gray-800 p-4">
+      <div className="container mx-auto grid grid-cols-1 sl:grid-cols-3 gap-4">
+        {/* About Section */}
+        <div className="text-gray-300">
         </div>
-        {/* Navigation Links */}
-        <div className="flex justify-center space-x-4 mb-4">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#projects">Portfolio</a>
-          <a href="#blog">Blog</a>
-          <a href="#contact">Contact</a>
-          <a href="/resume.pdf" target="_blank">Resume</a>
+        {/* Social Section */}
+        <div className="text-gray-300">
+          <div className="space-x-2">
+            <a href="#" className="hover:text-white">Twitter</a>
+            <a href="#" className="hover:text-white">LinkedIn</a>
+            <a href="#" className="hover:text-white">GitHub</a>
+          </div>
         </div>
-        {/* Copyright Notice */}
-        <p>© 2024 Your Name. All rights reserved.</p>
+      </div>
+
+      <div className="text-center text-gray-400 mt-4">
+        &copy; 2024 NikoFolio. All Rights Reserved.
       </div>
     </footer>
+
   );
-}
+};
 
 export default Footer;
