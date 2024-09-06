@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { TextureLoader } from 'three';
 
 const ThreeCanvas: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -21,33 +23,45 @@ const ThreeCanvas: React.FC = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
     document.body.style.margin = '0';  // Remove margin from body to make it full screen
-    document.body.appendChild(renderer.domElement);
 
-    // Create a 3D object (e.g., a sphere or cube)
-    const geometry = new THREE.SphereGeometry(1, 32, 32);
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
-    const sphere = new THREE.Mesh(geometry, material);
-    scene.add(sphere);
+    // Load the model and texture
+    const gltfLoader = new GLTFLoader();
+    const textureLoader = new TextureLoader();
+
+    // Load texture
+    const texture = textureLoader.load('/textures/texture.png');
+
+    // Load model
+    gltfLoader.load('/models/model.glb', (gltf) => {
+      const model = gltf.scene;
+
+      // Apply texture to the model (assuming it has a mesh)
+      model.traverse((child) => {
+        if (child.isMesh) {
+          child.material.map = texture;
+        }
+      });
+
+      scene.add(model);
+    }, undefined, (error) => {
+      console.error('An error happened:', error);
+    });
 
     camera.position.z = 5;
 
-    // Track mouse position for interactivity
-    const mouse = new THREE.Vector2();
-    window.addEventListener('mousemove', (event) => {
-      // Normalize mouse coordinates between -1 and 1
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    const ambientLight = new THREE.AmbientLight(0x404040); // Ambient light with a soft white color
+    scene.add(ambientLight);
 
-      // Move the sphere based on the mouse position
-      sphere.position.x = mouse.x * 2; // Move horizontally
-      sphere.position.y = mouse.y * 2; // Move vertically
-    });
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // White directional light
+    directionalLight.position.set(5, 5, 5).normalize();
+    scene.add(directionalLight);
+
+
 
     // Animate the scene
     const animate = () => {
       requestAnimationFrame(animate);
-      sphere.rotation.x += 0.01;
-      sphere.rotation.y += 0.01;
+      // Optionally, add rotation or other animations here
       renderer.render(scene, camera);
     };
     animate();
@@ -60,6 +74,7 @@ const ThreeCanvas: React.FC = () => {
     };
     window.addEventListener('resize', handleResize);
 
+    // Clean up on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
       renderer.dispose();

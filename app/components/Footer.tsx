@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
         {/* Social Section */}
         <div className="text-gray-300">
           <div className="space-x-2">
-            <a href="#" className="hover:text-white">Twitter</a>
+            <a href="#" className="hover:text-white">Line</a>
             <a href="#" className="hover:text-white">LinkedIn</a>
             <a href="#" className="hover:text-white">GitHub</a>
           </div>
