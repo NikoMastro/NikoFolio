@@ -1,0 +1,20 @@
+/* Custom Footer CSS */
+.footer {
+  display: flex; /* Activate flexbox layout */
+  justify-content: space-between; /* Distribute items across the footer */
+  align-items: center; /* Vertically align items */
+  position: fixed; /* Stick to the bottom */
+  bottom: 0; /* Align it at the bottom */
+  left: 0; /* Full width from left */
+  right: 0; /* Full width from right */
+  width: 100%; /* Ensure it takes the full width */
+  padding: 1rem; /* Add some padding for spacing */
+  z-index: 100; /* Ensure it stays on top of other content */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
+}
+
+.footer-item {
+  margin: 0 1rem; /* Add horizontal margin between items */
+  flex: 1; /* Ensure items take equal space */
+  text-align: center; /* Center align text */
+}
